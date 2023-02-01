@@ -19,7 +19,9 @@ export class WeatherService {
   ) { }
 
   // methods
-  getWeatherData(latitude: number, longitude: number):Observable<WeatherType>{
-    return this.http.get<WeatherType>(this._weatherEndPoint+`?latitude=39.47&longitude=-0.38&hourly=temperature_2m&hourly=relativehumidity_2m&hourly=relativehumidity_2m&hourly=windspeed_10m&current_weather=true&timezone=GMT&daily=sunrise&daily=sunset&daily=apparent_temperature_max&daily=apparent_temperature_min`);
+  getWeatherData(latitude: string, longitude: string):Observable<WeatherType>{
+    console.log(latitude+'\n'+longitude);
+    
+    return this.http.get<WeatherType>(this._weatherEndPoint+`?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m&hourly=relativehumidity_2m&hourly=relativehumidity_2m&hourly=windspeed_10m&current_weather=true&timezone=GMT&daily=sunrise&daily=sunset&daily=apparent_temperature_max&daily=apparent_temperature_min`);
   }
 }

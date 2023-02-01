@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 // FontAwesome Icons
 import { 
   faTemperatureEmpty,
@@ -31,19 +32,20 @@ export class AppComponent implements OnInit{
   // Weather Data
   weather_data!: WeatherType;
 
-  // default variables
-  default_latitude: number = 52.52;
-  default_longitude: number = 13.419998;
-  
+  // Reactive Form
+  myForm: FormGroup = this.fb.group({
+    latitude: [52.52, Validators.required],
+    longitude: [13.41, Validators.required],
+  });
 
-  constructor(private _ws: WeatherService) {}
+  constructor(
+    private fb: FormBuilder,
+    private _ws: WeatherService
+  ) {}
 
   ngOnInit(): void {
-    this._ws
-        .getWeatherData(this.default_latitude, this.default_longitude)
-        .subscribe((weather_response) => {
-          this.weather_data = weather_response;
-        });
+    // set default coords
+    this.getWeatherData();
   }
 
   getSunriseOrSunset(): boolean{
@@ -52,5 +54,20 @@ export class AppComponent implements OnInit{
     const sunsetTime: string = this.weather_data.daily.sunset[0].split('T')[1]!;
     
     return actualTime > sunsetTime;
+    // return true
+  }
+
+  private getWeatherData(){
+    return this._ws
+    .getWeatherData(this.myForm.value.latitude, this.myForm.value.longitude)
+    .subscribe((weather_response: WeatherType) => {
+      this.weather_data = weather_response;
+    });
+  }
+
+  onSubmit(){
+    // console.log(this.myForm.value.latitude +'\n'+ this.myForm.value.longitude);
+    // calling method with form data
+    this.getWeatherData();
   }
 }

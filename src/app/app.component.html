@@ -1,3 +1,20 @@
+<!-- Weather Search -->
+<div class="search">
+  <form (ngSubmit)="onSubmit()" [formGroup]="myForm" autocomplete="off">
+    <input 
+      type="text" 
+      formControlName="latitude"
+      placeholder="Enter Latitude...">
+    <input 
+      type="text"
+      formControlName="longitude" 
+      placeholder="Enter Longitude...">
+    <button type="submit">
+      Submit
+    </button>
+  </form>
+</div>
+<!-- Weather Info -->
 <div class="container">
   <div class="container-upperData">
     <!-- date -->
@@ -5,8 +22,14 @@
       <p>{{ myDate | date }}</p>
     </div>
     <!-- Day Image -->
-    <img src="" alt="">
-    <img src="{{ getSunriseOrSunset() ? '../assets/img/arindam-saha-rSLIzC-dlB4-unsplash.jpg' : '../assets/img/nathan-anderson-L95xDkSSuWw-unsplash.jpg' }}" alt="Photo by Nathan Anderson on Unsplash"/>
+    <img
+      src="{{
+        getSunriseOrSunset()
+          ? '../assets/img/arindam-saha-rSLIzC-dlB4-unsplash.jpg'
+          : '../assets/img/nathan-anderson-L95xDkSSuWw-unsplash.jpg'
+      }}"
+      alt="Photo by Nathan Anderson on Unsplash"
+    />
 
     <!-- WeatherData -->
     <div class="weather-data">
@@ -16,20 +39,19 @@
         <p>Longitude: {{ weather_data.longitude }}</p>
       </div>
       <!-- temperature -->
-      <div class="weather-data-temperature">{{ weather_data.current_weather.temperature | number }} °C</div>
+      <div class="weather-data-temperature">
+        {{ weather_data.current_weather.temperature | number }} °C
+      </div>
     </div>
-
   </div>
   <div class="container-lowerData">
-    <div class="more-info">
-      More Information
-    </div>
-    <div class="more-info-container">
+    <div class="more-info">More Information</div>
 
+    <div class="more-info-container">
       <div class="more-info-container-info-block">
         <div class="more-info-container-info-block-label">
           <!-- icon -->
-          <fa-icon class="fa-icon fa-4x" [icon]="faTemperatureEmpty" ></fa-icon>
+          <fa-icon class="fa-icon fa-4x" [icon]="faTemperatureEmpty"></fa-icon>
           <!-- data -->
           <span>min</span>
         </div>
@@ -41,7 +63,7 @@
       <div class="more-info-container-info-block">
         <div class="more-info-container-info-block-label">
           <!-- icon -->
-          <fa-icon class="fa-icon fa-4x" [icon]="faTemperatureFull" ></fa-icon>
+          <fa-icon class="fa-icon fa-4x" [icon]="faTemperatureFull"></fa-icon>
           <!-- data -->
           <span>max</span>
         </div>
@@ -53,7 +75,7 @@
       <div class="more-info-container-info-block">
         <div class="more-info-container-info-block-label">
           <!-- icon -->
-          <fa-icon class="fa-icon fa-4x" [icon]="faDroplet" ></fa-icon>
+          <fa-icon class="fa-icon fa-4x" [icon]="faDroplet"></fa-icon>
           <!-- data -->
           <span>humidity</span>
         </div>
@@ -65,7 +87,7 @@
       <div class="more-info-container-info-block">
         <div class="more-info-container-info-block-label">
           <!-- icon -->
-          <fa-icon class="fa-icon fa-4x" [icon]="faWind" ></fa-icon>
+          <fa-icon class="fa-icon fa-4x" [icon]="faWind"></fa-icon>
           <!-- data -->
           <span>wind</span>
         </div>
@@ -73,7 +95,6 @@
           {{ weather_data.hourly.windspeed_10m[0] }} km/h
         </div>
       </div>
-
     </div>
   </div>
 </div>
