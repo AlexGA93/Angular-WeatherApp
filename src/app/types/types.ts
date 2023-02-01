@@ -50,3 +50,13 @@ export interface HourlyUnits {
     relativehumidity_2m: string;
     windspeed_10m:       string;
 }
+
+export interface formDataPayload {
+    longitude: string;
+    latitude: string;
+}
+
+export interface formDataPayloadString {
+    longitude: string;
+    latitude: string;
+}

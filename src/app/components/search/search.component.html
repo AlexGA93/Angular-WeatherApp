@@ -1,0 +1,15 @@
+<div class="search">
+    <form (ngSubmit)="onSubmit()" [formGroup]="myForm" autocomplete="off">
+        <input 
+        type="text" 
+        formControlName="latitude"
+        placeholder="Enter Latitude...">
+        <input 
+        type="text"
+        formControlName="longitude" 
+        placeholder="Enter Longitude...">
+        <button type="submit">
+        Submit
+        </button>
+    </form>
+</div>
