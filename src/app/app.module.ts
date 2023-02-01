@@ -5,11 +5,15 @@ import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from './components/search/search.component';
+import { WeatherComponent } from './components/weather/weather.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchComponent,
+    WeatherComponent
   ],
   imports: [
     BrowserModule,

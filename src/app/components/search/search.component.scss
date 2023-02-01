@@ -1,0 +1,25 @@
+@import '../../../assets/scss/index.scss';
+
+.search{
+    text-align: center;
+    input, button{
+        width: 150px;
+        height: 44px;
+        margin: 0 1em 1em 1em;
+        background-color: $shadow-light-color;
+        outline: none;
+        border: none;
+        border-radius: 20px;
+        padding: 1em;
+        color: $white_color;
+        text-align: center;
+    }
+    button{
+        background-color: $shadow-light-color;
+        cursor: pointer;
+
+    }
+    button:hover{
+        background-color: $terciary_background_color;
+    } 
+}
