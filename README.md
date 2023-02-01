@@ -1,5 +1,9 @@
 # WeatherApp
 
+## Sample Images
+
+![alt text](https://github.com/AlexGA93/Angular-WeatherApp/blob/main/day_sample.PNG?raw=true)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
 
 ## Development server
